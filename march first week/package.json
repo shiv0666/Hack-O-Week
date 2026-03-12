@@ -1,0 +1,25 @@
+{
+  "name": "realtime-health-ws-api",
+  "version": "1.0.0",
+  "description": "WebSocket API for encrypted real-time health telemetry",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "client": "node client/send-sample.js"
+  },
+  "keywords": [
+    "websocket",
+    "health",
+    "encryption",
+    "realtime"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.16.0",
+    "ws": "^8.18.0"
+  }
+}

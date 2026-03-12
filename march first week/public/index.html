@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realtime Health Stream</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">Realtime + Encrypted</p>
+        <h1>Health Telemetry Dashboard</h1>
+        <p class="subtitle">
+          Stream heart rate and step events over WebSocket and inspect server acknowledgements instantly.
+        </p>
+      </header>
+
+      <section class="grid">
+        <article class="card controls">
+          <h2>Connection</h2>
+          <div class="row">
+            <label for="wsUrl">WebSocket URL</label>
+            <input id="wsUrl" type="text" value="ws://localhost:8080/ws/telemetry" />
+          </div>
+          <div class="btns">
+            <button id="connectBtn" class="btn primary">Connect</button>
+            <button id="disconnectBtn" class="btn" disabled>Disconnect</button>
+          </div>
+          <p id="connectionStatus" class="status">Disconnected</p>
+        </article>
+
+        <article class="card sender">
+          <h2>Telemetry Generator</h2>
+          <div class="row two-col">
+            <div>
+              <label for="patientId">Patient ID</label>
+              <input id="patientId" type="text" value="patient-001" />
+            </div>
+            <div>
+              <label for="sendEvery">Send every (ms)</label>
+              <input id="sendEvery" type="number" min="300" value="1000" />
+            </div>
+          </div>
+          <div class="btns">
+            <button id="startStreamBtn" class="btn accent" disabled>Start Stream</button>
+            <button id="stopStreamBtn" class="btn" disabled>Stop Stream</button>
+            <button id="sendOneBtn" class="btn" disabled>Send One</button>
+          </div>
+          <p class="hint">Payload includes patientId, timestamp, heartRate, and steps.</p>
+        </article>
+      </section>
+
+      <section class="card log-wrap">
+        <div class="log-head">
+          <h2>Live Log</h2>
+          <button id="clearLogBtn" class="btn tiny">Clear</button>
+        </div>
+        <pre id="log" class="log"></pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
