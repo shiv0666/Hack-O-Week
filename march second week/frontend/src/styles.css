@@ -1,0 +1,251 @@
+:root {
+  --bg-top: #fff0db;
+  --bg-mid: #d9f2ff;
+  --bg-bottom: #e7e3ff;
+  --panel: rgba(255, 255, 255, 0.84);
+  --text-main: #122030;
+  --text-muted: #495d72;
+  --danger: #8d1f1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: var(--text-main);
+  background: linear-gradient(140deg, var(--bg-top), var(--bg-mid) 52%, var(--bg-bottom));
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(6, 35, 55, 0.08) 0.7px, transparent 0.7px);
+  background-size: 4px 4px;
+  opacity: 0.22;
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(34px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.page::before {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle at center, #ff8f6a, transparent 70%);
+  top: -80px;
+  right: -80px;
+}
+
+.page::after {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at center, #3ca6ff, transparent 70%);
+  bottom: -120px;
+  left: -100px;
+}
+
+.dashboard {
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.6));
+  border: 1px solid rgba(29, 42, 61, 0.14);
+  border-radius: 22px;
+  box-shadow: 0 24px 70px rgba(9, 29, 45, 0.16);
+  backdrop-filter: blur(4px);
+  padding: 28px;
+  animation: rise 500ms ease-out;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.7vw, 2.4rem);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.kicker {
+  margin: 0 0 6px;
+  color: var(--text-muted);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.filters {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.filters input {
+  border: 1px solid rgba(17, 44, 60, 0.18);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text-main);
+}
+
+.filterActions {
+  display: flex;
+  gap: 8px;
+}
+
+.filterActions button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  background: #173d5a;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.filterActions .ghost {
+  background: rgba(22, 58, 84, 0.1);
+  color: #173d5a;
+}
+
+.metricGrid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metric {
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(15, 27, 40, 0.14);
+}
+
+.metric p {
+  margin: 0;
+  font-size: 0.82rem;
+  opacity: 0.9;
+}
+
+.metric h3 {
+  margin: 4px 0 0;
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.metricPulse {
+  background: linear-gradient(135deg, #1a82f7, #48c5ff);
+}
+
+.metricHeart {
+  background: linear-gradient(135deg, #ff5d6d, #ffa64d);
+}
+
+.metricSteps {
+  background: linear-gradient(135deg, #1db48f, #6dd57d);
+}
+
+.charts {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid rgba(16, 41, 60, 0.12);
+  border-radius: 16px;
+  padding: 16px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.08rem;
+}
+
+.chartWrap {
+  height: 290px;
+}
+
+.state {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(250, 254, 255, 0.88);
+  border: 1px solid rgba(24, 43, 67, 0.17);
+}
+
+.state.error {
+  color: var(--danger);
+  border-color: rgba(141, 31, 31, 0.32);
+  background: rgba(255, 237, 237, 0.9);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 920px) {
+  .charts {
+    grid-template-columns: 1fr;
+  }
+
+  .metricGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .filterActions {
+    justify-content: flex-start;
+  }
+
+  .panel {
+    min-height: 320px;
+  }
+
+  .chartWrap {
+    height: 250px;
+  }
+}
