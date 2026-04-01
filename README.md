@@ -134,7 +134,11 @@ Hack-O-Week is not just a set of assignments, but a **complete journey of buildi
 ## 👨‍💻 Authors
 
 **Shivansh Lohani**
+
+
 **Surajit Halder**
+
+
 Third Year Students
 Hack-O-Week Project Repository
 
